@@ -14,6 +14,13 @@ export default {
             '^': '',
         },
     },
+      '/hdfs' : {
+          target: 'http://39.96.93.7:8000',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
     },
   dev: {
     '/api/': {
@@ -24,6 +31,13 @@ export default {
       },
     },
       '/sso' : {
+          target: 'http://39.96.93.7:8000',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
+      '/hdfs' : {
           target: 'http://39.96.93.7:8000',
           changeOrigin: true,
           pathRewrite: {
@@ -46,6 +60,13 @@ export default {
               '^': '',
           },
       },
+      '/hdfs' : {
+          target: 'http://39.96.93.7:8000',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
   },
   pre: {
     '/api/': {
@@ -56,6 +77,13 @@ export default {
       },
     },
       '/sso' : {
+          target: 'http://39.96.93.7:8000',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
+      '/hdfs' : {
           target: 'http://39.96.93.7:8000',
           changeOrigin: true,
           pathRewrite: {

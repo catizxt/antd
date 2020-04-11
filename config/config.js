@@ -126,29 +126,45 @@ export default {
               path: '/admin',
               name: 'admin',
               icon: 'crown',
-              component: './Admin',
               authority: ['admin'],
               routes: [
                 {
                   path: '/admin/sub-page',
                   name: 'sub-page',
                   icon: 'smile',
-                  component: './Welcome',
+                  component: './Admin',
                   authority: ['admin'],
                 },
+                  {
+                      name: 'list.table-list',
+                      icon: 'table',
+                      path: '/admin/list',
+                      component: './ListTableList',
+                  },
+
               ],
             },
-            {
-              name: 'list.table-list',
-              icon: 'table',
-              path: '/list',
-              component: './ListTableList',
-            },
+
               {
                   name: 'video.video-player',
                   icon: 'table',
-                  path: '/video',
+                  path: '/playVideo',
                   component: './VideoPlayer',
+              },
+
+              {
+                  name: 'video.article-file',
+                  icon: 'table',
+                  path: '/articles',
+                  component: './ListSearchArticles',
+              },
+
+
+              {
+                  name: 'video.video-file',
+                  icon: 'table',
+                  path: '/videos',
+                  component: './ListSearchProjects',
               },
             {
               component: './404',

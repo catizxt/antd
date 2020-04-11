@@ -5,12 +5,23 @@ import "video-react/dist/video-react.css";
 
 
 export default props => {
-    return (
-        <Player>
-            <source src="http://39.96.93.7:8000/hdfs/play?fpath=/user/data/test.mp4" />
-
-             </Player>
-    );
+    const params = {
+        href:props.location
+    };
+    if(params.href){
+        return (
+            <Player>
+                <source src={"http://39.96.93.7:8000/hdfs/play?fpath="+params.href.query.href} />
+            </Player>
+        );
+    }
+    else {
+        return (
+            <Player>
+                <source src={"http://39.96.93.7:8000/hdfs/play?fpath=/user/data/test.mp4" } />
+            </Player>
+        );
+    }
 };
 // <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
 //<source src="http://39.96.93.7:8000/hdfs/play?fpath=/user/data/test.mp4" />
