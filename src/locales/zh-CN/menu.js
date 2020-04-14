@@ -26,6 +26,7 @@ export default {
   'menu.list': '列表页',
   'menu.list.table-list': '查询表格',
     'menu.video.video-player':'视频播放',
+    'menu.text.text-file' : '文本编辑',
     'menu.video.video-file' : '自学视频',
     'menu.video.article-file' : '自学文件',
   'menu.list.basic-list': '标准列表',

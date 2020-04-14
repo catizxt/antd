@@ -165,6 +165,13 @@ export default {
                   path: '/videos',
                   component: './ListSearchProjects',
               },
+
+              {
+                  name: 'text.text-file',
+                  icon: 'table',
+                  path: '/edit',
+                  component: './TextEditor',
+              },
             {
               component: './404',
             },

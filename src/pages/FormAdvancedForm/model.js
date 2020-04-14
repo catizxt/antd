@@ -10,11 +10,11 @@ const Model = {
   effects: {
     *submitAdvancedForm({ payload }, { call }) {
       yield call(fakeSubmitForm, payload);
-      message.success('提交成功');
+      //message.success('提交成功');
     },
       *fetchData ({ payload }, { call , put }) {
           const response = yield call(fetchData, payload);
-          message.success('提交成功');
+          //message.success('提交成功');
           yield put({
               type: 'queryList',
               payload: Array.isArray(response) ? response : [],
@@ -22,7 +22,7 @@ const Model = {
       },
       *deleteData ({ payload }, { call }) {
           const response = yield call(deleteData, payload);
-          message.success('提交成功');
+          //message.success('提交成功');
           console.log(response);
       },
 

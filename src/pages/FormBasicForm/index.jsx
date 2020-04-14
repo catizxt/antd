@@ -193,7 +193,6 @@ const FormBasicForm = props => {
               marginTop: 32,
             }}
           >
-
               <Button type="primary" htmlType="submit" loading={submitting}>
                   <FormattedMessage id="formbasicform.form.submit" />
               </Button>
