@@ -1,4 +1,5 @@
 import { queryFakeList } from './service';
+//import { queryFakeList } from '@/services/login';
 
 const Model = {
   namespace: 'listSearchProjects',
@@ -7,8 +8,9 @@ const Model = {
   },
   effects: {
     *fetch({ payload }, { call, put }) {
-      const response = yield call(queryFakeList);
+      const response = yield call(queryFakeList,payload);
       //const response = yield call(queryFakeList, payload);
+        console.log(response);
       yield put({
         type: 'queryList',
         payload: Array.isArray(response) ? response : [],

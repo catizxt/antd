@@ -6,10 +6,14 @@ import ProTable from '@ant-design/pro-table';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
 import { queryRule, updateRule, addRule, removeRule } from './service';
+
 /**
  * 添加节点
  * @param fields
  */
+
+const a = queryRule();
+console.log(a);
 
 const handleAdd = async fields => {
   const hide = message.loading('正在添加');
@@ -71,6 +75,7 @@ const handleRemove = async selectedRows => {
   }
 };
 
+
 const TableList = () => {
   const [sorter, setSorter] = useState('');
   const [createModalVisible, handleModalVisible] = useState(false);
@@ -78,80 +83,127 @@ const TableList = () => {
   const [stepFormValues, setStepFormValues] = useState({});
   const actionRef = useRef();
   const columns = [
-    {
-      title: '规则名称',
-      dataIndex: 'name',
-      rules: [
         {
-          required: true,
-          message: '规则名称为必填项',
+            title: '文件名称',
+            dataIndex: 'filename',
+            key: 'filename',
+            width: '15%',
+            render: (text, record) => {
+                if (record.editable) {
+                    return (
+                        <Input
+                            value={text}
+                            autoFocus
+                            onChange={e => handleFieldChange(e, 'filename', record.key)}
+                            onKeyPress={e => handleKeyPress(e, record.key)}
+                            placeholder="成员姓名"
+                        />
+                    );
+                }
+
+                return text;
+            },
         },
-      ],
-    },
-    {
-      title: '描述',
-      dataIndex: 'desc',
-      valueType: 'textarea',
-    },
-    {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
-      sorter: true,
-      hideInForm: true,
-      renderText: val => `${val} 万`,
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
-      hideInForm: true,
-      valueEnum: {
-        0: {
-          text: '关闭',
-          status: 'Default',
+        {
+            title: '文件标题',
+            dataIndex: 'title',
+            key: 'title',
+            width: '20%',
+            render: (text, record) => {
+                if (record.editable) {
+                    return (
+                        <Input
+                            value={text}
+                            onChange={e => handleFieldChange(e, 'title', record.key)}
+                            onKeyPress={e => handleKeyPress(e, record.key)}
+                            placeholder="工号"
+                        />
+                    );
+                }
+                return text;
+            },
         },
-        1: {
-          text: '运行中',
-          status: 'Processing',
+        {
+            title: '文件类别',
+            dataIndex: 'type',
+            key: 'type',
+            width: '10%',
+            render: (text, record) => {
+                if (record.editable) {
+                    return (
+                        <Input
+                            value={text}
+                            onChange={e => handleFieldChange(e, 'type', record.key)}
+                            onKeyPress={e => handleKeyPress(e, record.key)}
+                            placeholder="所属部门"
+                        />
+                    );
+                }
+
+                return text;
+            },
         },
-        2: {
-          text: '已上线',
-          status: 'Success',
+        {
+            title: '文件描述',
+            dataIndex: 'subDescription',
+            key: 'subDescription',
+            width: '20%',
+            render: (text, record) => {
+                if (record.editable) {
+                    return (
+                        <Input
+                            value={text}
+                            onChange={e => handleFieldChange(e, 'subDescription', record.key)}
+                            onKeyPress={e => handleKeyPress(e, record.key)}
+                            placeholder="文章标题"
+                        />
+                    );
+                }
+
+                return text;
+            },
         },
-        3: {
-          text: '异常',
-          status: 'Error',
+        {
+            title: '上传时间',
+            dataIndex: 'createdAt',
+            key: 'createdAt',
+            width: '20%',
+            render: (text, record) => {
+                if (record.editable) {
+                    return (
+                        <Input
+                            value={text}
+                            onChange={e => handleFieldChange(e, 'createdAt', record.key)}
+                            onKeyPress={e => handleKeyPress(e, record.key)}
+                            placeholder="文章描述"
+                        />
+                    );
+                }
+
+                return text;
+            },
         },
-      },
-    },
-    {
-      title: '上次调度时间',
-      dataIndex: 'updatedAt',
-      sorter: true,
-      valueType: 'dateTime',
-      hideInForm: true,
-    },
-    {
-      title: '操作',
-      dataIndex: 'option',
-      valueType: 'option',
-      render: (_, record) => (
-        <>
-          <a
-            onClick={() => {
-              handleUpdateModalVisible(true);
-              setStepFormValues(record);
-            }}
-          >
-            配置
-          </a>
-          <Divider type="vertical" />
-          <a href="">订阅警报</a>
-        </>
-      ),
-    },
-  ];
+
+
+        {
+            title: '操作',
+            key: 'action',
+            render: (text, record) => {
+              return (
+                    <span>
+            <a onClick={e => toggleEditable(e, record.key)}>编辑</a>
+            <Divider type="vertical" />
+            <Popconfirm title="是否要删除此行？" onConfirm={() => remove(record.key)}>
+              <a href={'http://39.96.93.7:8000/hdfs/delete?title='+record.title}>删除</a>
+            </Popconfirm>
+          </span>
+                );
+            },
+        },
+    ];
   return (
     <PageHeaderWrapper>
+
       <ProTable
         headerTitle="查询表格"
         actionRef={actionRef}
@@ -209,7 +261,7 @@ const TableList = () => {
             </span>
           </div>
         )}
-        request={params => queryRule(params)}
+        request={queryRule()}
         columns={columns}
         rowSelection={{}}
       />

@@ -1,8 +1,7 @@
 import request from '@/utils/request';
-export async function queryRule(params) {
-  return request('/api/ok', {
-    params,
-  });
+export async function queryRule() {
+  return request('/hdfs/filelist',
+  );
 }
 export async function removeRule(params) {
   return request('/api/rule', {

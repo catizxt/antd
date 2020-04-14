@@ -1,31 +1,91 @@
-import { Upload, message, Button } from 'antd';
+import { Upload, Button, message } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import reqwest from 'reqwest';
 import ReactDOM from 'react-dom';
+import React from 'react';
+import { connect } from 'dva';
 
-const props = {
-    name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-    headers: {
-        authorization: 'authorization-text',
-    },
-    onChange(info) {
-        if (info.file.status !== 'uploading') {
-            console.log(info.file, info.fileList);
-        }
-        if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
-        }
-    },
-};
+class Demo extends React.Component {
+    state = {
+        fileList: [],
+        uploading: false,
+    };
 
-export default props => {
-    return (
-        <Upload {...props}>
-            <Button>
-                <UploadOutlined /> Click to Upload
-            </Button>
-        </Upload>
-    );
-};
+    handleUpload = () => {
+        const { fileList } = this.state;
+        const formData = new FormData();
+        fileList.forEach(file => {
+            formData.append('files', file);
+        });
+
+        this.setState({
+            uploading: true,
+        });
+
+        // You can use any AJAX library you like
+        reqwest({
+            url: 'http://39.96.93.7:8000/hdfs/uploadtest',
+            method: 'post',
+            processData: false,
+            data: formData,
+
+            success: () => {
+                this.setState({
+                    fileList: [],
+                    uploading: false,
+                });
+                message.success('upload successfully.');
+            },
+            error: () => {
+                this.setState({
+                    uploading: false,
+                });
+                message.error('upload failed.');
+            },
+        });
+    };
+
+    render() {
+        const { uploading, fileList } = this.state;
+        const props = {
+            onRemove: file => {
+                this.setState(state => {
+                    const index = state.fileList.indexOf(file);
+                    const newFileList = state.fileList.slice();
+                    newFileList.splice(index, 1);
+                    return {
+                        fileList: newFileList,
+                    };
+                });
+            },
+            beforeUpload: file => {
+                this.setState(state => ({
+                    fileList: [...state.fileList, file],
+                }));
+                return false;
+            },
+            fileList,
+        };
+
+        return (
+            <div>
+                <Upload {...props}>
+                    <Button>
+                        <UploadOutlined /> Select File
+                    </Button>
+                </Upload>
+                <Button
+                    type="primary"
+                    onClick={this.handleUpload}
+                    disabled={fileList.length === 0}
+                    loading={uploading}
+                    style={{ marginTop: 16 }}
+                >
+                    {uploading ? 'Uploading' : 'Start Upload'}
+                </Button>
+            </div>
+        );
+    }
+}
+
+export default connect()(Demo);

@@ -21,6 +21,13 @@ export default {
               '^': '',
           },
       },
+      '/uploadfile' : {
+          target: 'http://123.57.33.125:8080',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
     },
   dev: {
     '/api/': {
@@ -39,6 +46,13 @@ export default {
       },
       '/hdfs' : {
           target: 'http://39.96.93.7:8000',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
+      '/uploadfile' : {
+          target: 'http://123.57.33.125:8080',
           changeOrigin: true,
           pathRewrite: {
               '^': '',
@@ -85,6 +99,13 @@ export default {
       },
       '/hdfs' : {
           target: 'http://39.96.93.7:8000',
+          changeOrigin: true,
+          pathRewrite: {
+              '^': '',
+          },
+      },
+      '/uploadfile' : {
+          target: 'http://123.57.33.125:8080',
           changeOrigin: true,
           pathRewrite: {
               '^': '',

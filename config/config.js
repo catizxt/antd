@@ -132,16 +132,15 @@ export default {
                   path: '/admin/sub-page',
                   name: 'sub-page',
                   icon: 'smile',
-                  component: './Admin',
+                  component: './FormAdvancedForm',
                   authority: ['admin'],
                 },
                   {
                       name: 'list.table-list',
                       icon: 'table',
                       path: '/admin/list',
-                      component: './ListTableList',
+                      component: './FormBasicForm',
                   },
-
               ],
             },
 
