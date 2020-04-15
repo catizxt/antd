@@ -6,17 +6,17 @@ import request from '@/utils/request';
 export async function SubmitForm(params) {
     console.log("看看能不能输出");
     console.log(params);
-   return request.get('/hdfs/upload', {
-        params: {
-            title: params.title,
-            filename: params.filename,
-            subDescription : params.subDescription,
-            cover : params.cover,
-            type : params.type,
-        }
-    });
-  // return request('/hdfs/upload', {
-  //   method: 'POST',
-  //   data: params,
-  // });
+   // return request.get('/hdfs/upload', {
+   //      params: {
+   //          title: params.title,
+   //          filename: params.filename,
+   //          subDescription : params.subDescription,
+   //          cover : params.cover,
+   //          type : params.type,
+   //      }
+   //  });
+  return request('/hdfs/upload', {
+    method: 'POST',
+    data: params,
+  });
 }

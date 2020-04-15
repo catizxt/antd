@@ -6,6 +6,7 @@ import ArticleListContent from './components/ArticleListContent';
 import StandardFormRow from './components/StandardFormRow';
 import TagSelect from './components/TagSelect';
 import styles from './style.less';
+import Link from 'umi/link';
 
 const { Option } = Select;
 const FormItem = Form.Item;
@@ -22,6 +23,7 @@ const ListSearchArticles = ({ dispatch, listSearchArticles: { list }, loading })
     });
   }, []);
 
+  //这个地方可以删除
   const setOwner = () => {
     form.setFieldsValue({
       owner: ['wzj'],
@@ -255,16 +257,16 @@ const ListSearchArticles = ({ dispatch, listSearchArticles: { list }, loading })
               extra={<div className={styles.listItemExtra} />}
             >
               <List.Item.Meta
-                title={
-                  <a className={styles.listItemMetaTitle} href={item.href}>
-                    {item.title}
-                  </a>
-                }
+                title= {<Link to={{
+                    pathname: '/textreader',
+                    query: {
+                        href: item.href,
+                    }
+                }}>{item.title}</Link>}
                 description={
                   <span>
-                    <Tag>Ant Design</Tag>
-                    <Tag>设计语言</Tag>
-                    <Tag>蚂蚁金服</Tag>
+                    <h1>{item.subDescription}</h1>
+                    <Tag>{item.type}</Tag>
                   </span>
                 }
               />

@@ -3,6 +3,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {Button,Divider,Form,Input,Select} from 'antd';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
+import {SubmitFile} from './service';
 
 const layout = {
     labelCol: {
@@ -41,8 +42,17 @@ class TextEditor extends React.Component{
 
     //就在这个函数里面调用富文本编辑器文件上传函数
     onFinish = values => {
-        console.log(values);
-        console.log(this.state.text);
+        const params = {
+            title : values.title,
+            filename : values.filename,
+            subDescription: values.subDescription,
+            type: values.type,
+            data : this.state.text
+        };
+
+        //console.log(params);
+        SubmitFile(params);
+        //console.log(this.state.text);
     };
     modules={//富文本配置
         toolbar:{

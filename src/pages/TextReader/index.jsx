@@ -7,6 +7,7 @@ export default props => {
     const params = {
         href:props.location
     };
+
     if(params.href){
         return (
             <Player>

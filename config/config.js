@@ -165,6 +165,12 @@ export default {
                   path: '/videos',
                   component: './ListSearchProjects',
               },
+              {
+                  name: 'text.text-reader',
+                  icon: 'table',
+                  path: '/textreader',
+                  component: './TextPlayer',
+              },
 
               {
                   name: 'text.text-file',

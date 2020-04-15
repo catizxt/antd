@@ -8,7 +8,11 @@ const Model = {
   },
   effects: {
     *fetch({ payload }, { call, put }) {
-      const response = yield call(queryFakeList,payload);
+      const payload1 = {
+        count : payload.count,
+        filetype : "video",
+      };
+      const response = yield call(queryFakeList,payload1);
       //const response = yield call(queryFakeList, payload);
         console.log(response);
       yield put({
