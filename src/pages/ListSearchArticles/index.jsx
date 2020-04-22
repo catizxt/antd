@@ -260,7 +260,7 @@ const ListSearchArticles = ({ dispatch, listSearchArticles: { list }, loading })
                 title= {<Link to={{
                     pathname: '/textreader',
                     query: {
-                        href: item.href,
+                        href: item.filename,
                     }
                 }}>{item.title}</Link>}
                 description={

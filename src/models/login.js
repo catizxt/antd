@@ -27,7 +27,9 @@ const Model = {
 
             cookie.save('zly_token', response.token, { path: '/' });
             //这个东西应当使用react redux存储数据
-            cookie.save('zly_name',response.email, { path: '/' });
+            //cookie.save('zly_name',response.email, { path: '/' });
+
+            localStorage.setItem("zly_name",response.email);
 
             console.log("输出权限");
             console.log(response.currentAuthority);
@@ -63,7 +65,7 @@ const Model = {
 
         logout() {
             const { redirect } = getPageQuery(); // Note: There may be security issues, please note
-            cookie.remove('zly_name', { path: '/' });
+            localStorage.removeItem('zly_name');
 
             if (window.location.pathname !== '/user/login' && !redirect) {
                 router.replace({

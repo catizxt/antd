@@ -28,6 +28,7 @@ export default {
     'menu.video.video-player':'视频播放',
     'menu.text.text-reader' : '文件阅读',
     'menu.text.text-file' : '文本编辑',
+    'menu.docker.docker-file' : "在线实验平台",
     'menu.video.video-file' : '自学视频',
     'menu.video.article-file' : '自学文件',
   'menu.list.basic-list': '标准列表',

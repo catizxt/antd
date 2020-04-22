@@ -25,7 +25,7 @@ const Textplayer = ({ location,onChange, submitting, dispatch,textplayer:{ list 
         dispatch({
             type: 'textplayer/fetchData',
             payload: {
-                href: params.href.query.href,
+                href: "/user/data/text/"+params.href.query.href,
             },
         });
     }, []);

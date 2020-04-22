@@ -52,7 +52,7 @@ const ListSearchProjects = ({ dispatch, listSearchProjects: { list = [] }, loadi
             title = {<Link to={{
                 pathname: '/playVideo',
                 query: {
-                    href: item.href,
+                    href: item.filename,
             }
             }}>{item.title}</Link>}
 

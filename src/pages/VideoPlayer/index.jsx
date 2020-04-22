@@ -10,7 +10,7 @@ export default props => {
     if(params.href){
         return (
             <Player>
-                <source src={"http://39.96.93.7:8000/hdfs/play?fpath="+params.href.query.href} />
+                <source src={"http://39.96.93.7:8000/hdfs/play?fpath=/user/data/video/"+params.href.query.href} />
             </Player>
         );
     }

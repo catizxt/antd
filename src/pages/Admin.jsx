@@ -22,13 +22,14 @@ class Demo extends React.Component {
             uploading: true,
         });
 
+        //这里一定要支持跨域
         // You can use any AJAX library you like
         reqwest({
-            url: 'http://39.96.93.7:8000/hdfs/uploadtest',
+            url: 'http://39.96.93.7:8000/hdfs/uploadto',
             method: 'post',
             processData: false,
             data: formData,
-
+            crossOrigin: true,
             success: () => {
                 this.setState({
                     fileList: [],

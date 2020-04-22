@@ -17,7 +17,7 @@ const UserModel = {
 
     *fetchCurrent(_, { call, put }) {
       //这样的话这个东西只能在logout的时候删除，这种做法是不好的
-      var param = {"msg":cookie.load('zly_name')};
+      var param = {"msg":localStorage.getItem("zly_name")};
       //  var param = {"msg":"a"};
       //cookie.remove('zly_name');
       //这个获取头像的又出问题了

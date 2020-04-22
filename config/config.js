@@ -178,6 +178,13 @@ export default {
                   path: '/edit',
                   component: './TextEditor',
               },
+
+              {
+                  name: 'docker.docker-file',
+                  icon: 'table',
+                  path: '/docker',
+                  component: './DockerPage',
+              },
             {
               component: './404',
             },
