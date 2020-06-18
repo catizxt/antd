@@ -4,6 +4,7 @@
  */
 import { extend } from 'umi-request';
 import { notification } from 'antd';
+import cookie from 'react-cookies';
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -48,6 +49,7 @@ const errorHandler = error => {
 /**
  * 配置request请求时的默认参数
  */
+//cookie.load("zly_token")
 
 //在这个地方确认请求是否岛上cookie
 const request = extend({
@@ -56,7 +58,8 @@ const request = extend({
   credentials: 'include', // 默认请求是否带上cookie
     headers: {
         //"Content-Type": "application/json",
-         "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "*",
+        "token" : cookie.load("zly_token"),
     },
 });
 export default request;

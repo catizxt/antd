@@ -4,6 +4,7 @@ import slash from 'slash2';
 import themePluginConfig from './themePluginConfig';
 import proxy from './proxy';
 import webpackPlugin from './plugin.config';
+//import dynamic from 'dva/dynamic';
 const { pwa } = defaultSettings; // preview.pro.ant.design only do not use in your production ;
 // preview.pro.ant.design 专用环境变量，请不要在你的项目中使用它。
 
@@ -141,15 +142,17 @@ export default {
                       path: '/admin/list',
                       component: './FormBasicForm',
                   },
+                  {
+                      name: 'text.text-file',
+                      icon: 'table',
+                      path: 'admin/edit',
+                      component: './TextEditor',
+                  },
+
               ],
             },
 
-              {
-                  name: 'video.video-player',
-                  icon: 'table',
-                  path: '/playVideo',
-                  component: './VideoPlayer',
-              },
+
 
               {
                   name: 'video.article-file',
@@ -165,18 +168,20 @@ export default {
                   path: '/videos',
                   component: './ListSearchProjects',
               },
+
               {
-                  name: 'text.text-reader',
                   icon: 'table',
                   path: '/textreader',
                   component: './TextPlayer',
-              },
+                  target: '_blank',
 
+              },
               {
-                  name: 'text.text-file',
+                  name: 'video.video-player',
                   icon: 'table',
-                  path: '/edit',
-                  component: './TextEditor',
+                  path: '/playVideo',
+                  component: './VideoPlayer',
+
               },
 
               {

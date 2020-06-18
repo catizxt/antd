@@ -7,7 +7,11 @@ export default props => {
     const params = {
         href:props.location
     };
-    if(params.href){
+
+
+
+    if( params.href.query.href ){
+
         return (
             <Player>
                 <source src={"http://39.96.93.7:8000/hdfs/play?fpath=/user/data/video/"+params.href.query.href} />
@@ -15,12 +19,15 @@ export default props => {
         );
     }
     else {
+        console.log('ok');
+        //console.log(params.href);
         return (
             <Player>
-                <source src={"http://39.96.93.7:8000/hdfs/play?fpath=/user/data/test.mp4" } />
+                <source src={"http://39.96.93.7:8000/hdfs/play?fpath=/user/data/video/welcome.mp4"} />
             </Player>
         );
     }
+
 };
 // <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
 //<source src="http://39.96.93.7:8000/hdfs/play?fpath=/user/data/test.mp4" />

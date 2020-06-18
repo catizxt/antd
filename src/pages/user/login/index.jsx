@@ -74,7 +74,7 @@ const Login = props => {
                     </Link>
 
                     <Link className={styles.register} to="/user/forgetpassword">
-                        忘记密码
+                        找回密码
                     </Link>
 
 

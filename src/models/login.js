@@ -15,7 +15,12 @@ const Model = {
             //var payload2 = {"username":payload.username,"password":payload.password};
             //console.log(payload);
             const response = yield call(AccountLogin, payload);
-
+            cookie.save('zly_token', response.token, { path: '/' });
+            //这个东西应当使用react redux存储数据
+            //cookie.save('zly_name',response.email, { path: '/' });
+            localStorage.setItem("zly_token",response.token);
+            console.log(localStorage.getItem("zly_token"));
+            localStorage.setItem("zly_name",response.email);
             //还有admin这个不对啊
             //这个地方解决完就是后端的权限了，主要就是需要向
             //后端传入当前用户名
@@ -25,11 +30,7 @@ const Model = {
                 payload: response,
             }); // Login successfully
 
-            cookie.save('zly_token', response.token, { path: '/' });
-            //这个东西应当使用react redux存储数据
-            //cookie.save('zly_name',response.email, { path: '/' });
 
-            localStorage.setItem("zly_name",response.email);
 
             console.log("输出权限");
             console.log(response.currentAuthority);
@@ -54,6 +55,8 @@ const Model = {
                         return;
                     }
                 }
+                //看这里是否合适
+                //location.reload();
                 //重定向这个地方有一点问题
                 router.replace('/');
             }
@@ -64,8 +67,14 @@ const Model = {
         },
 
         logout() {
+            //https://blog.csdn.net/shb2058/article/details/82253652
+            //设置过期时间比较复杂
+            //https://blog.csdn.net/mx18519142864/article/details/79916749/
             const { redirect } = getPageQuery(); // Note: There may be security issues, please note
             localStorage.removeItem('zly_name');
+            localStorage.removeItem("zly_token");
+            cookie.remove("zly_token");
+
 
             if (window.location.pathname !== '/user/login' && !redirect) {
                 router.replace({

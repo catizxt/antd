@@ -16,6 +16,9 @@ const { RangePicker } = DatePicker;
 //const { dispatch } = this.props;
 const Textplayer = ({ location,onChange, submitting, dispatch,textplayer:{ list = [] },loading  }) => {
 
+    console.log("拿到值");
+    console.log(location);
+
     const params = {
         href: location
     };

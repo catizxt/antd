@@ -234,11 +234,10 @@ export default class Example extends React.Component {
                         )
                     }
                     <a>{urls}</a>
-                    <p>复制链接到浏览器，一个浏览器只能运行一个虚拟机！
-                    如果是创建hadoop,因创建时间过长，创建中...可能会提前停止，所以请耐心等待</p>
-                </Modal>
-
-
+                    <h1>仅可使用三小时！</h1>
+                    <p>复制链接到浏览器，进入在线实验平台后，点击旁边的Grid View切换虚拟机器
+                    资源创建需要一定时间，请耐心等待，
+                    </p> </Modal>
 
             </PageHeaderWrapper>
         );

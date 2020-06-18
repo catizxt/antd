@@ -53,6 +53,7 @@ class TextEditor extends React.Component{
 
         //console.log(params);
         SubmitFile(params);
+
         //console.log(this.state.text);
     };
     modules={//富文本配置
@@ -137,6 +138,7 @@ class TextEditor extends React.Component{
                         >
                             <Option value="hadoop">hadoop</Option>
                             <Option value="es">es</Option>
+                            <Option value="bigdata">bigdata</Option>
                             <Option value="docker">docker</Option>
                         </Select>
                     </Form.Item>
