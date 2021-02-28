@@ -1,6 +1,8 @@
-# Ant Design Pro
+采用Ant Design Pro 框架编写
 
-This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+网站前端页面
+
+![网站页面](https://img-blog.csdnimg.cn/20210228165949346.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JhaWR1XzQxODQ4Njk1,size_16,color_FFFFFF,t_70#pic_center)
 
 ## Environment Prepare
 
@@ -34,24 +36,4 @@ npm start
 npm run build
 ```
 
-### Check code style
 
-```bash
-npm run lint
-```
-
-You can also use script to auto fix some lint error:
-
-```bash
-npm run lint:fix
-```
-
-### Test code
-
-```bash
-npm test
-```
-
-## More
-
-You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
